@@ -1,58 +1,26 @@
-def summary_report(day):
-    while 1:
+# Define a function that accepts two arguments and prints the result of the filename from the second argument
+def summary_report(day, filename):
 
-        user_input = input('what day do you want to look up? ')
+    # Print the day of which we are displaying the results (argument 1)
+    print(day)
 
-        if user_input == "Day1":
-            print("Day 1")
-            the_file = open("um-deliveries-day-1.txt")
-        elif user_input == "Day2":
-            print("Day 2")
-            the_file = open("um-deliveries-day-2.txt")
-        elif user_input == "Day3":
-            print("Day 3")
-            the_file = open("um-deliveries-day-3.txt")
+    # Open the file which we are going through (argument 2)
+    the_file = open(filename)
 
-        for line in the_file:
-            line = line.rstrip()
-            words = line.split(' ')
-            melon = words[0]
-            count = words[0]
-            amount = words[0]
-
+    # Loop through each line of the file, tokenize the line and print the desired output
+    for line in the_file:
+        line = line.rstrip()
+        words = line.split('|')
+        melon = words[0]
+        count = words[1]
+        amount = words[2]
         print(f"Delivered {count} {melon}s for total of ${amount}")
-        the_file.close()
 
-    return (day)
-
-
-day = "Day1"
-bucket = summary_report(day)
+    # Close the file before exiting the function
+    the_file.close()
 
 
-# print(f"Delivered {count} {melon}s for total of ${amount}")
-# the_file.close()
-
-# print("Day 2")
-# the_file = open("um-deliveries-day-2.txt")
-# for line in the_file:
-#     line = line.rstrip()
-#     words = line.split('|')
-
-#     melon = words[0]
-#     count = words[0]
-#     amount = words[0]
-
-#     print(f"Delivered {count} {melon}s for total of ${amount}")
-# the_file.close()
-
-
-# print("Day 3")
-# the_file = open("um-deliveries-day-3.txt")
-# for line in the_file:
-#     line = line.rstrip()
-#     words = line.split('|')
-
-#     melon = words[0]
-#     count = words[0]
-#     amount = words[0]
+# Call the function with the three different files as arguments
+summary_report("Day 1", "um-deliveries-day-1.txt")
+summary_report("Day 2", "um-deliveries-day-2.txt")
+summary_report("Day 3", "um-deliveries-day-3.txt")
